@@ -1,16 +1,48 @@
 .quiz {
   background: $gray-darker;
+  margin: 0 auto;
+  @media (max-width: $screen-xs-min), (min-width: $screen-xs-min) {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 30px;
+  }
   @media (min-width: $screen-sm-min) {
     width: $container-sm;
+    height: 100%;
+    padding-bottom: 30px;
   }
   @media (min-width: $screen-md-min) {
     width: $container-md;
+    height: 621px;
   }
   @media (min-width: $screen-lg-min) {
     width: $container-lg + 10px;
+    height: 633px;
   }
-  height: 617px;
-  margin: 0 auto;
+}
+.container {
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg + 10px;
+  }
+}
+.left-panel {
+  float: left;
+  padding: 0 15px;
+  @media (max-width: $screen-sm-min), (min-width: $screen-sm-min) {
+    width: 100%;
+  }
+  @media (min-width: $screen-md-min) {
+    width: 40%;
+  }
+}
+.right-panel {
+  width: 60%;
+  float: left;
+  padding: 0 15px;
+  display: none;
+  @media (min-width: $screen-md-min) {
+    display: block;
+  }
 }
 header {
   background: $brand-primary;
@@ -90,5 +122,13 @@ header {
         height: 100%;
       }
     }
+  }
+}
+.image-container {
+  width: calc(100% + 30px);
+
+  img {
+    width: 100%;
+    height: auto;
   }
 }
