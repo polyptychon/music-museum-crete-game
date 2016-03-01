@@ -6,27 +6,28 @@ html
   head
     include partials/header
   body
-    header
+    .quiz
+      header
+        .container
+          .score.pull-right
+            span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
+            span.score-value 1 / 20
       .container
-        .score.pull-right
-          span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
-          span.score-value 1 / 20
-    .container
-      .col-md-4
-        h4.question-heading
-          span.question-name ΕΡΩΤΗΣΗ
-          span.question-value (7/20)
-        .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
-        ul.answers
-          li
-            a(href="javascript:") Α. Νικόλαος Χάρχαλης
-          li
-            a(href="javascript:") Β. Κωνσταντίνος Παπαδάκης ή Ναύτης
-          li
-            a(href="javascript:") Γ. Νικόλαος Τσέγκας
-          li
-            a(href="javascript:") Δ. Μιχάλης Κουνέλης
-          li
-            a(href="javascript:") Ε. Γιώργος Κουτσουρέλης
+        .col-md-4
+          h4.question-heading
+            span.question-name ΕΡΩΤΗΣΗ
+            span.question-value (7/20)
+          .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
+          ul.answers
+            li
+              a(href="javascript:") Α. Νικόλαος Χάρχαλης
+            li
+              a(href="javascript:") Β. Κωνσταντίνος Παπαδάκης ή Ναύτης
+            li
+              a(href="javascript:") Γ. Νικόλαος Τσέγκας
+            li
+              a(href="javascript:") Δ. Μιχάλης Κουνέλης
+            li
+              a(href="javascript:") Ε. Γιώργος Κουτσουρέλης
 
     script(type="text/javascript", src="assets/js/main.js" async)
