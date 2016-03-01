@@ -1,26 +1,26 @@
 @import "sprites";
 
-$hover-icons: facebook twitter close;
+//$hover-icons: facebook twitter close;
+//
+//@each $hover-icon in $hover-icons {
+//  @media (-webkit-min-device-pixel-ratio: 1.1), (min-device-pixel-ratio: 1.1),  (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
+//    .#{$hover-icon}-icon {
+//      background-image: url($pathToSpriteSVG);
+//      background-size: $spriteWidth $spriteHeight;
+//    }
+//  }
+//  .#{$hover-icon}-icon {
+//    @extend .sprite_#{$hover-icon};
+//    &:hover {
+//      @extend .sprite_#{$hover-icon}-hover;
+//    }
+//  }
+//  a:hover .#{$hover-icon}-icon, a:focus .#{$hover-icon}-icon, button:hover .#{$hover-icon}-icon, button:focus .#{$hover-icon}-icon {
+//    @extend .sprite_#{$hover-icon}-hover;
+//  }
+//}
 
-@each $hover-icon in $hover-icons {
-  @media (-webkit-min-device-pixel-ratio: 1.1), (min-device-pixel-ratio: 1.1),  (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
-    .#{$hover-icon}-icon {
-      background-image: url($pathToSpriteSVG);
-      background-size: $spriteWidth $spriteHeight;
-    }
-  }
-  .#{$hover-icon}-icon {
-    @extend .sprite_#{$hover-icon};
-    &:hover {
-      @extend .sprite_#{$hover-icon}-hover;
-    }
-  }
-  a:hover .#{$hover-icon}-icon, a:focus .#{$hover-icon}-icon, button:hover .#{$hover-icon}-icon, button:focus .#{$hover-icon}-icon {
-    @extend .sprite_#{$hover-icon}-hover;
-  }
-}
-
-$simple-icons: logo logo-small title title-intro speaker speaker-muted previous next arrow-up arrow-down previous-small next-small check;
+$simple-icons: logo logo-en;
 
 @each $simple-icon in $simple-icons {
   @media (-webkit-min-device-pixel-ratio: 1.1), (min-device-pixel-ratio: 1.1),  (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
@@ -31,137 +31,5 @@ $simple-icons: logo logo-small title title-intro speaker speaker-muted previous 
   }
   .#{$simple-icon}-icon {
     @extend .sprite_#{$simple-icon};
-  }
-}
-
-.close-icon {
-  margin-bottom: -2px;
-  margin-right: -5px;
-}
-.share-icon {
-  margin-bottom: -8px;
-}
-.arrow-down-icon {
-  margin-top: -1px;
-  margin-right: 4px;
-}
-.previous-small-icon, .next-small-icon {
-  margin: 0 10px -2px;
-}
-$play-color: #ededed;
-.play, .pause {
-  -webkit-animation: zoomAndFadeOut 1s ease-in-out;
-  animation: zoomAndFadeOut 1s ease-in-out;
-  animation-fill-mode: forwards;
-  position: absolute;
-  pointer-events: none;
-
-  left: 50%;
-  width: 54px;
-  height: 54px;
-  margin: -27px 0 0 -27px;
-  background: rgba(#000, .5);
-  border-radius: 50%;
-  &.hidden {
-    -webkit-animation: none;
-    animation: none;
-    opacity: 0;
-    transform: scale(0,0);
-  }
-}
-.play {
-  &.visible {
-    -webkit-animation: zoomAndFadeIn 1s ease-in-out;
-    animation: zoomAndFadeIn 1s ease-in-out;
-    animation-fill-mode: forwards;
-  }
-  &:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -12px 0 0 -8px;
-    width: 0;
-    height: 0;
-    border-top: 12px solid transparent;
-    border-left: 20px solid $play-color;
-    border-bottom: 12px solid transparent;
-  }
-}
-.pause {
-  &:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -12px 0 0 -9px;
-    width: 6px;
-    height: 26px;
-    border-right: 6px solid $play-color;
-    border-left: 6px solid $play-color;
-  }
-}
-.play, .pause, .buffering {
-  top: 45%;
-  @media (max-height: $screen-xs) {
-    top: 35%;
-  }
-}
-.video-player-compact, .video-player-compact-documentary {
-  .play, .pause, .buffering {
-    top: 45%;
-  }
-}
-.leanback {
-  .play, .pause, .buffering {
-    top: 50%;
-  }
-}
-@-webkit-keyframes zoomAndFadeOut {
-  0% {
-    transform: scale(0,0);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(2,2);
-    opacity: .7;
-  }
-  100% {
-    transform: scale(1.5,1.5);
-    opacity: 0;
-  }
-}
-@keyframes zoomAndFadeOut {
-  0% {
-    transform: scale(0,0);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(2,2);
-    opacity: .7;
-  }
-  100% {
-    transform: scale(1.5,1.5);
-    opacity: 0;
-  }
-}
-@-webkit-keyframes zoomAndFadeIn {
-  0% {
-    transform: scale(0,0);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1,1);
-    opacity: 1;
-  }
-}
-@keyframes zoomAndFadeIn {
-  0% {
-    transform: scale(0,0);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1,1);
-    opacity: 1;
   }
 }
