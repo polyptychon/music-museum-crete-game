@@ -1,11 +1,25 @@
 .quiz {
   background: $gray-darker;
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg + 10px;
+  }
+  height: 617px;
+  margin: 0 auto;
 }
 header {
   background: $brand-primary;
-  padding: 20px 15px;
+  padding: 20px 0;
   color: $body-bg;
   font-size: 16px;
+  .score {
+    float: right;
+  }
   .score-value {
     color: $gray-dark;
   }
@@ -44,9 +58,12 @@ header {
 }
 .answers {
   margin-top: 30px;
+  position: relative;
+  z-index: 1;
   @extend .list-unstyled;
   li {
     position: relative;
+    z-index: 1;
   }
   li a {
     padding: 10px 0;
@@ -54,7 +71,7 @@ header {
     color: $body-bg;
     font-size: 17px;
     transition: all .4s ease-out;
-    &:before {
+    &:after {
       content: "";
       display: block;
       position: absolute;
@@ -69,7 +86,7 @@ header {
     &:hover, &:focus, &.selected {
       padding: 10px;
       text-decoration: none;
-      &:before {
+      &:after {
         height: 100%;
       }
     }

@@ -9,11 +9,12 @@ html
     .quiz
       header
         .container
-          .score.pull-right
-            span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
-            span.score-value 1 / 20
+          .col-md-12
+            .score
+              span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
+              span.score-value 1 / 20
       .container
-        .col-md-4
+        .col-md-5
           h4.question-heading
             span.question-name ΕΡΩΤΗΣΗ
             span.question-value (7/20)
@@ -29,5 +30,7 @@ html
               a(href="javascript:") Δ. Μιχάλης Κουνέλης
             li
               a(href="javascript:") Ε. Γιώργος Κουτσουρέλης
+        .col-md-7.visible-lg.visible-md
+          img(src="assets/images/Q7.jpg")
 
     script(type="text/javascript", src="assets/js/main.js" async)
