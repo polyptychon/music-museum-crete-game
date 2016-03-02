@@ -14,10 +14,12 @@
   @media (min-width: $screen-md-min) {
     width: $container-md;
     height: 621px;
+    overflow: hidden;
   }
   @media (min-width: $screen-lg-min) {
     width: $container-lg + 10px;
     height: 633px;
+    overflow: hidden;
   }
 }
 .container {
