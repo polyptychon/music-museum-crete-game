@@ -20,16 +20,10 @@ html
             span.question-value (7/20)
           .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
           ul.answers
-            li
-              a(href="javascript:") Α. Νικόλαος Χάρχαλης
-            li
-              a(href="javascript:") Β. Κωνσταντίνος Παπαδάκης ή Ναύτης
-            li
-              a(href="javascript:") Γ. Νικόλαος Τσέγκας
-            li
-              a(href="javascript:") Δ. Μιχάλης Κουνέλης
-            li
-              a(href="javascript:") Ε. Γιώργος Κουτσουρέλης
+            each item in ["Α. Νικόλαος Χάρχαλης", "Β. Κωνσταντίνος Παπαδάκης ή Ναύτης", "Γ. Νικόλαος Τσέγκας", "Δ. Μιχάλης Κουνέλης", "Ε. Γιώργος Κουτσουρέλης"]
+              li
+                a(data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?")=item
+
         .right-panel
           .image-container
             img(src="assets/images/Q7.jpg")
