@@ -1,6 +1,7 @@
 - var mainMenuActiveIndex = -1;
 - var brandName = "ΓΝΩΡΙΖΟΝΤΑΣ ΤΗ ΜΟΥΣΙΚΗ ΚΑΙ ΧΟΡΕΥΤΙΚΗ ΠΑΡΑΔΟΣΗ ΤΗΣ ΚΡΗΤΗΣ";
 - var pageTitle = brandName;
+- var answers = [{name: "Α. Νικόλαος Χάρχαλης", img:"xarxalis-nikolaos.jpg"}, {name: "Β. Κωνσταντίνος Παπαδάκης ή Ναύτης", img:"papadakis-kostas.jpg"}, {name: "Γ. Νικόλαος Τσέγκας", img:"tsagas-nikolaos.jpg"}, {name: "Δ. Μιχάλης Κουνέλης", img:"kounelis-mixalis.jpg"}, {name: "Ε. Γιώργος Κουτσουρέλης", img:"koytsourelis-giorgos.jpg"}];
 doctype html
 html
   head
@@ -20,9 +21,10 @@ html
             span.question-value (7/20)
           .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
           ul.answers
-            each item in ["Α. Νικόλαος Χάρχαλης", "Β. Κωνσταντίνος Παπαδάκης ή Ναύτης", "Γ. Νικόλαος Τσέγκας", "Δ. Μιχάλης Κουνέλης", "Ε. Γιώργος Κουτσουρέλης"]
+            each answer in answers
               li
-                a(data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?")=item
+                - var img="assets/images/"+answer.img;
+                a(data-toggle="popover" data-content="<img src=\"#{img}\">")=answer.name
 
         .right-panel
           .image-container
