@@ -277,7 +277,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('default', ['json', 'coffee', 'sass', 'jade']);
-gulp.task('live', ['coffee', 'jade', 'sass', 'watch']);
+gulp.task('live', ['json', 'coffee', 'jade', 'sass', 'watch']);
 gulp.task('editor', ['editorSass']);
 
 gulp.task('build', function() {
