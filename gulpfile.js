@@ -215,6 +215,16 @@ gulp.task('clean-images', function() {
   });
 });
 
+gulp.task('json', function() {
+  return gulp.src([SRC+'/json/*.json'])
+    .pipe(duration('json'))
+    .pipe(flatten().on('error', gutil.log))
+    .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev()))
+    .pipe(gulp.dest(getOutputDir()+ASSETS+'/json').on('error', gutil.log))
+    .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev.manifest()))
+    .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, gulp.dest(BUILD+'/rev/json')))
+});
+
 gulp.task('sounds', function() {
   return gulp.src([MOCKUPS+'/sounds/*.mp3'])
     .pipe(duration('sounds'))
@@ -245,8 +255,9 @@ gulp.task('fonts', function() {
 gulp.task('watch', function() {
   watching = true;
   livereload.listen();
-  gulp.watch(SRC+'/**/*.jade', ['jade']).on('error', gutil.log);
-  gulp.watch(SRC+'/**/*.{js,coffee}', ['coffee']).on('error', gutil.log);
+  gulp.watch(SRC+'/json/*.json', ['json']).on('error', gutil.log);
+  gulp.watch(SRC+'/**/*.{jade,json}', ['jade']).on('error', gutil.log);
+  gulp.watch(SRC+'/**/*.{js,coffee,json}', ['coffee']).on('error', gutil.log);
   gulp.watch(SRC+'/**/*.scss', ['sass']).on('error', gutil.log);
   gulp.watch(BUILD+env+'/assets/**').on('change', function(file) {
     console.log(file.path);
@@ -265,17 +276,17 @@ gulp.task('connect', function() {
     }));
 });
 
-gulp.task('default', ['coffee', 'sass', 'jade']);
+gulp.task('default', ['json', 'coffee', 'sass', 'jade']);
 gulp.task('live', ['coffee', 'jade', 'sass', 'watch']);
 gulp.task('editor', ['editorSass']);
 
 gulp.task('build', function() {
-  runSequence(['fonts','images','sounds','spriteSass','autoVariables'],['fonts','coffee','sass'],['jade']);
+  runSequence(['fonts','images','sounds','spriteSass','autoVariables'],['json', 'fonts','coffee','sass'],['jade']);
 });
 gulp.task('server', ['connect', 'watch']);
 gulp.task('production', function() {
   env = PRODUCTION;
-  runSequence(['clean-images','clean-sounds','clean-js'],['images','sounds'],['fonts','coffee','sass'],['jade']);
+  runSequence(['clean-images','clean-sounds','clean-js'],['images','sounds'],['json', 'fonts','coffee','sass'],['jade']);
 });
 
 //gulp watch --jade=filename
