@@ -13,7 +13,7 @@ html
           .col-md-12
             .score
               span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
-              span.score-value 0
+              span.score-value 0 / #{locals.data.questions.length*4}
       .container
         each question,index in locals.data.questions
           .question-container(class=index==0?"active":"")
