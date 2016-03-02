@@ -1,7 +1,6 @@
 - var mainMenuActiveIndex = -1;
 - var brandName = "ΓΝΩΡΙΖΟΝΤΑΣ ΤΗ ΜΟΥΣΙΚΗ ΚΑΙ ΧΟΡΕΥΤΙΚΗ ΠΑΡΑΔΟΣΗ ΤΗΣ ΚΡΗΤΗΣ";
 - var pageTitle = brandName;
-- var answers = [{name: "Νικόλαος Χάρχαλης", img:"xarxalis-nikolaos.jpg"}, {name: "Κωνσταντίνος Παπαδάκης ή Ναύτης", img:"papadakis-kostas.jpg"}, {name: "Νικόλαος Τσέγκας", img:"tsagas-nikolaos.jpg"}, {name: "Μιχάλης Κουνέλης", img:"kounelis-mixalis.jpg"}, {name: "Γιώργος Κουτσουρέλης", img:"koytsourelis-giorgos.jpg"}];
 - var letters = ['α','β','γ','δ','ε','ζ','η','θ','ι','κ','λ','μ','ν','ξ','ο','π','ρ','σ','τ','υ','φ','χ','ψ','ω']
 doctype html
 html
@@ -22,10 +21,10 @@ html
             span.question-value (7/20)
           .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
           ul.answers
-            each answer,index in answers
+            each answer,index in locals.data.questions[0].answers
               li
                 - var img="assets/images/"+answer.img;
-                a(data-content="<img src=\"#{img}\">")=letters[index].toUpperCase()+". "+answer.name
+                a(data-content="<img src=\"#{img}\">")=letters[index].toUpperCase()+". "+answer.label
 
         .right-panel
           .image-container

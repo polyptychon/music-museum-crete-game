@@ -67,10 +67,10 @@ gulp.task('jade', function() {
   var config = {
     "production": env === PRODUCTION,
     "pretty": env === DEVELOPMENT,
-    "locals": {},
-    'data': JSON.parse(fs.readFileSync("./"+SRC+"/json/el.json", "utf8"))
+    "locals": {
+      'data': JSON.parse(fs.readFileSync("./" + SRC + "/json/el.json", "utf8"))
+    }
   };
-
   var jsManifest      = env === PRODUCTION && USE_FINGERPRINTING ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/js/rev-manifest.json', "utf8"))) : {},
       //vendorManifest  = env === PRODUCTION ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/js-vendor/rev-manifest.json', "utf8"))) : {},
       cssManifest     = env === PRODUCTION && USE_FINGERPRINTING? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/css/rev-manifest.json', "utf8"))) : {},
