@@ -1,3 +1,3 @@
-# alexander-interactive-documentary
+# music-museum-crete-game
 
-http://polyptychon.github.io/alexander-interactive-documentary/
+http://polyptychon.github.io/music-museum-crete-game/
