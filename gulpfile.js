@@ -68,7 +68,7 @@ gulp.task('jade', function() {
   //vendorManifest  = env === PRODUCTION ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/js-vendor/rev-manifest.json', "utf8"))) : {},
     cssManifest     = env === PRODUCTION && USE_FINGERPRINTING? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/css/rev-manifest.json', "utf8"))) : {},
     imagesManifest  = env === PRODUCTION && USE_FINGERPRINTING ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/images/rev-manifest.json', "utf8"))) : {};
-  
+
   var config = {
     "production": env === PRODUCTION,
     "pretty": env === DEVELOPMENT,
@@ -219,10 +219,12 @@ gulp.task('clean-images', function() {
 });
 
 gulp.task('json', function() {
-  var imagesManifest  = env === PRODUCTION && USE_FINGERPRINTING ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/images/rev-manifest.json', "utf8"))) : {};
+  var imagesManifest  = env === PRODUCTION && USE_FINGERPRINTING ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/images/rev-manifest.json', "utf8"))) : {},
+      soundsManifest = env === PRODUCTION && USE_FINGERPRINTING ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/sounds/rev-manifest.json', "utf8"))) : {};;
   return gulp.src([SRC+'/json/*.json'])
     .pipe(duration('json'))
     .pipe(gulpif( env === PRODUCTION && USE_FINGERPRINTING, fingerprint(imagesManifest, { mode:'replace' }) ))
+    .pipe(gulpif( env === PRODUCTION && USE_FINGERPRINTING, fingerprint(soundsManifest, { mode:'replace' }) ))
     .pipe(flatten().on('error', gutil.log))
     .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev()))
     .pipe(gulp.dest(getOutputDir()+ASSETS+'/json').on('error', gutil.log))
