@@ -38,7 +38,7 @@ var gulp = require('gulp'),
 
 var DEVELOPMENT = 'development',
     PRODUCTION = 'production',
-    USE_FINGERPRINTING = false,
+    USE_FINGERPRINTING = true,
     USE_VENDOR = false,
     BUILD = "builds/",
     ASSETS = "/assets",
@@ -107,6 +107,8 @@ gulp.task('coffee', function() {
       .pipe(gulpif(env === PRODUCTION, size()))
       .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev()))
       .pipe(gulp.dest(getOutputDir()+ASSETS+'/js'))
+      .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev.manifest()))
+      .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, gulp.dest(BUILD+'/rev/js')))
       .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev.manifest()))
       .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, gulp.dest(BUILD+'/rev/js')))
   }
