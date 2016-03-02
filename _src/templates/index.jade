@@ -15,19 +15,23 @@ html
               span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
               span.score-value 1 / 20
       .container
-        .left-panel
-          h4.question-heading
-            span.question-name ΕΡΩΤΗΣΗ
-            span.question-value (7/20)
-          .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
-          ul.answers
-            each answer,index in locals.data.questions[0].answers
-              li
-                - var img="assets/images/"+answer.img;
-                a(data-content="<img src=\"#{img}\">")=letters[index].toUpperCase()+". "+answer.label
-
-        .right-panel
-          .image-container
-            img(src="assets/images/"+locals.data.questions[0].image)
+        each question,index in locals.data.questions
+          .question-container(class=index==0?"active":"")
+            .left-panel
+              h4.question-heading
+                span.question-name ΕΡΩΤΗΣΗ
+                span.question-value (#{index+1}/20)
+              .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
+              ul.answers
+                each answer,index in question.answers
+                  li
+                    if answer.img
+                      - var img="assets/images/"+answer.img;
+                      a(data-content="<img src=\"#{img}\">")=letters[index].toUpperCase()+". "+answer.label
+                    else
+                      a(href="javascript:")=letters[index].toUpperCase()+". "+answer.label
+            .right-panel
+              .image-container
+                img(src="assets/images/"+question.image)
 
     script(type="text/javascript", src="assets/js/main.js" async)
