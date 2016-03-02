@@ -213,6 +213,29 @@ gulp.task('clean-images', function() {
       });
   });
 });
+
+gulp.task('sounds', function() {
+  return gulp.src([MOCKUPS+'/sounds/*.mp3'])
+    .pipe(duration('sounds'))
+    .pipe(flatten().on('error', gutil.log))
+    .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev()))
+    .pipe(gulp.dest(getOutputDir()+ASSETS+'/sounds').on('error', gutil.log))
+    .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, rev.manifest()))
+    .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, gulp.dest(BUILD+'/rev/sounds')))
+});
+gulp.task('clean-sounds', function() {
+  return new Promise(function (resolve, reject) {
+    var vp = vinylPaths();
+
+    gulp.src(getOutputDir()+ASSETS+'/sounds')
+      .pipe(vp)
+      .pipe(gulp.dest('dist'))
+      .on('end', function () {
+        del(vp.paths).then(resolve).catch(reject);
+      });
+  });
+});
+
 gulp.task('fonts', function() {
   return gulp.src(['node_modules/bootstrap/assets/fonts/**', MOCKUPS+"/fonts/*"])
     .pipe(gulp.dest(getOutputDir()+ASSETS+'/fonts'))
@@ -246,12 +269,12 @@ gulp.task('live', ['coffee', 'jade', 'sass', 'watch']);
 gulp.task('editor', ['editorSass']);
 
 gulp.task('build', function() {
-  runSequence(['fonts','images','spriteSass','autoVariables'],['fonts','coffee','sass'],['jade']);
+  runSequence(['fonts','images','sounds','spriteSass','autoVariables'],['fonts','coffee','sass'],['jade']);
 });
 gulp.task('server', ['connect', 'watch']);
 gulp.task('production', function() {
   env = PRODUCTION;
-  runSequence(['clean-images','clean-js'],['images'],['fonts','coffee','sass'],['jade']);
+  runSequence(['clean-images','clean-sounds','clean-js'],['images','sounds'],['fonts','coffee','sass'],['jade']);
 });
 
 //gulp watch --jade=filename
