@@ -19,8 +19,8 @@ html
           .question-container(class=index==0?"active":"")
             .left-panel
               h4.question-heading
-                span.question-name ΕΡΩΤΗΣΗ
-                span.question-value (#{index+1}/#{locals.data.questions.length})
+                span.question-name ΕΡΩΤΗΣΗ&nbsp;
+                span.question-value ( #{index+1} / #{locals.data.questions.length} )
               .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
               ul.answers
                 each answer,index in question.answers
