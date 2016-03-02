@@ -19,22 +19,31 @@ preload = (images) ->
 
 
 answers = [
-  {name: "Α. Νικόλαος Χάρχαλης", img:"xarxalis-nikolaos.jpg"}
-  {name: "Β. Κωνσταντίνος Παπαδάκης ή Ναύτης", img:"papadakis-kostas.jpg"}
-  {name: "Γ. Νικόλαος Τσέγκας", img:"tsagas-nikolaos.jpg"}
-  {name: "Δ. Μιχάλης Κουνέλης", img:"kounelis-mixalis.jpg"}
-  {name: "Ε. Γιώργος Κουτσουρέλης", img:"koytsourelis-giorgos.jpg"}
+  {name: "Νικόλαος Χάρχαλης", img:"xarxalis-nikolaos.jpg"}
+  {name: "Κωνσταντίνος Παπαδάκης ή Ναύτης", img:"papadakis-kostas.jpg"}
+  {name: "Νικόλαος Τσέγκας", img:"tsagas-nikolaos.jpg"}
+  {name: "Μιχάλης Κουνέλης", img:"kounelis-mixalis.jpg"}
+  {name: "Γιώργος Κουτσουρέλης", img:"koytsourelis-giorgos.jpg"}
 ]
 
 preload answers.map((item)->
   return "assets/images/"+item.img
 )
 
-$('.answers a').popover({
-  delay: { "show": 500, "hide": 100 }
-  animation: true
-  html: true
-  trigger: "hover"
-  container:"body"
-  placement:"right"
-})
+setImagePopovers = ()->
+  if $(window).width()>991
+    $('.answers a').popover({
+      delay: { "show": 500, "hide": 100 }
+      animation: true
+      html: true
+      trigger: "hover"
+      container:"body"
+      placement:"right"
+    })
+  else
+    $('.answers a').popover('destroy')
+
+setImagePopovers()
+$(window).bind('resize', ()->
+  setImagePopovers()
+)
