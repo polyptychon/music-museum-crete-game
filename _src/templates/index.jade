@@ -13,14 +13,14 @@ html
           .col-md-12
             .score
               span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
-              span.score-value 1 / 20
+              span.score-value 0
       .container
         each question,index in locals.data.questions
           .question-container(class=index==0?"active":"")
             .left-panel
               h4.question-heading
                 span.question-name ΕΡΩΤΗΣΗ
-                span.question-value (#{index+1}/20)
+                span.question-value (#{index+1}/#{locals.data.questions.length})
               .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
               ul.answers
                 each answer,index in question.answers
