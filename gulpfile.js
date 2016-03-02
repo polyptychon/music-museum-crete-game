@@ -77,7 +77,7 @@ gulp.task('jade', function() {
     }
   };
 
-  gulp.src(SRC+"/templates/"+jadeFiles+".jade")
+  return gulp.src(SRC+"/templates/"+jadeFiles+".jade")
     .pipe(duration('jade'))
     .pipe(jade(config).on('error', gutil.log))
     .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, fingerprint(jsManifest, { base:'assets/js/', prefix: 'assets/js/' })))
@@ -120,11 +120,11 @@ gulp.task('coffee', function() {
 });
 
 gulp.task('clean-js', function() {
-  gulp.src(getOutputDir()+ASSETS+'/js', { read: false })
+  return gulp.src(getOutputDir()+ASSETS+'/js', { read: false })
     .pipe(gulpif(env === PRODUCTION, vinylPaths(del).on('error', gutil.log)))
 });
 gulp.task('vendor', function() {
-  gulp.src(dependencies)
+  return gulp.src(dependencies)
     .pipe(gulpif(env === DEVELOPMENT, sourcemaps.init()))
     .pipe(concat('vendor.js'))
     .pipe(gulpif(env === DEVELOPMENT, sourcemaps.write()))
@@ -193,7 +193,7 @@ gulp.task('editorSass', function() {
     .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, gulp.dest(BUILD+'/rev/css')))
 });
 gulp.task('clean-css', function() {
-  gulp.src(getOutputDir()+ASSETS+'/css', { read: false })
+  return gulp.src(getOutputDir()+ASSETS+'/css', { read: false })
     .pipe(gulpif(env === PRODUCTION, vinylPaths(del).on('error', gutil.log)))
 });
 gulp.task('images', function() {
@@ -232,7 +232,7 @@ gulp.task('json', function() {
     .pipe(gulpif(env === PRODUCTION && USE_FINGERPRINTING, gulp.dest(BUILD+'/rev/json')))
 });
 gulp.task('clean-json', function() {
-  gulp.src(getOutputDir()+ASSETS+'/json', { read: false })
+  return gulp.src(getOutputDir()+ASSETS+'/json', { read: false })
     .pipe(gulpif(env === PRODUCTION, vinylPaths(del).on('error', gutil.log)))
 });
 
