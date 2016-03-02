@@ -67,7 +67,8 @@ gulp.task('jade', function() {
   var config = {
     "production": env === PRODUCTION,
     "pretty": env === DEVELOPMENT,
-    "locals": {}
+    "locals": {},
+    'data': JSON.parse(fs.readFileSync("./"+SRC+"/json/el.json", "utf8"))
   };
 
   var jsManifest      = env === PRODUCTION && USE_FINGERPRINTING ? (JSON.parse(fs.readFileSync("./"+BUILD+'/rev/js/rev-manifest.json', "utf8"))) : {},
