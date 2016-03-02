@@ -10,26 +10,6 @@ require "bootstrap/assets/javascripts/bootstrap/popover"
 #require "bootstrap/assets/javascripts/bootstrap/carousel"
 #require "bootstrap/assets/javascripts/bootstrap/tooltip"
 
-preload = (images) ->
-  i=0
-  for img in images
-    images[i] = new Image()
-    images[i].src = img
-    i++
-
-
-answers = [
-  {name: "Νικόλαος Χάρχαλης", img:"xarxalis-nikolaos.jpg"}
-  {name: "Κωνσταντίνος Παπαδάκης ή Ναύτης", img:"papadakis-kostas.jpg"}
-  {name: "Νικόλαος Τσέγκας", img:"tsagas-nikolaos.jpg"}
-  {name: "Μιχάλης Κουνέλης", img:"kounelis-mixalis.jpg"}
-  {name: "Γιώργος Κουτσουρέλης", img:"koytsourelis-giorgos.jpg"}
-]
-
-preload answers.map((item)->
-  return "assets/images/"+item.img
-)
-
 setImagePopovers = ()->
   if $(window).width()>991
     $('.answers a').popover({
