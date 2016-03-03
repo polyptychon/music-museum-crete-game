@@ -210,21 +210,25 @@ header {
   }
 }
 .modal-dialog {
+  max-width: 500px;
+}
+.modal-dialog {
   margin-top: 200px;
 }
-.modal-header, .modal-footer {
+.modal-header {
+  text-align: left;
+}
+.modal-header, .modal-footer, .modal-body {
   border: none;
 }
 .modal-body {
   font-size: 16px;
-}
-.modal-footer {
-  //text-align: center;
+  padding: 10px 15px 15px;
 }
 #finishModal {
   .modal-dialog {
     margin-top: 100px;
-    max-width: 300px;
+    max-width: 400px;
   }
   .modal-footer, .modal-body, .btn {
     font-size: 18px;

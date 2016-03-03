@@ -11,11 +11,14 @@ mixin modal (options)
   - var saveButtonClass = options.saveButtonClass || 'btn-primary';
   - var backdrop = options.backdrop || true
   - var keyboard = options.keyboard==null ? true : options.keyboard;
+  - var glyphicon = options.glyphicon;
 
   .modal.fade(tabindex='-1', role='dialog' id=id data-backdrop=backdrop data-keyboard=keyboard)
     .modal-dialog
       .modal-content
         .modal-header
+          if glyphicon
+            span.glyphicon(class=glyphicon)
           if showCloseButton
             button.close(type='button', data-dismiss='modal', aria-label=closeButtonLabel)
               span(aria-hidden='true') ×
