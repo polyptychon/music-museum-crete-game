@@ -217,20 +217,20 @@ header {
 }
 .modal-header, .modal-footer, .modal-body {
   border: none;
+  text-align: center;
 }
 .modal-body {
   font-size: 16px;
   padding: 10px 15px 15px;
 }
+.modal-footer {
+  margin-bottom: 20px;
+}
+.modal-footer, .modal-body, .modal-footer .btn {
+  font-size: 18px;
+}
 #finishModal {
   .modal-dialog {
     max-width: 400px;
-  }
-  .modal-footer, .modal-body, .btn {
-    font-size: 18px;
-    text-align: center;
-  }
-  .modal-footer {
-    margin-bottom: 30px;
   }
 }
