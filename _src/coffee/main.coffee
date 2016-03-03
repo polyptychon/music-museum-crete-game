@@ -78,6 +78,7 @@ $('#finishModal .btn.save-button').bind('click', ()->
 )
 
 reset = ()->
+  $('.answers a').popover('hide')
   $('.modal').modal('hide')
   $('.page').each(()->
     $(this).attr('style', '')
