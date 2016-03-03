@@ -1,6 +1,6 @@
-.quiz {
-  background: $gray-darker;
+.pages, .page {
   margin: 0 auto;
+  position: relative;
   @media (max-width: $screen-xs-min), (min-width: $screen-xs-min) {
     width: 100%;
     height: 100%;
@@ -21,6 +21,12 @@
     height: 633px;
     overflow: hidden;
   }
+}
+.home {
+  background: $gray-lighter url('../images/BG_Arxiki_Teliki.jpg');
+}
+.quiz {
+  background: $gray-darker;
 }
 .container {
   @media (min-width: $screen-lg-min) {

@@ -9,31 +9,10 @@ html
   head
     include partials/header
   body
-    .quiz
-      header
-        .container
-          .col-md-12
-            .score
-              span.score-name #{acc(locals.data["score-label"])}&nbsp;&nbsp;
-              span.score-value 0 / #{locals.data.questions.length*4}
-      .container.quiz-container
-        each question,index in locals.data.questions
-          .question-container(class=index==0?"active":"")
-            .left-panel
-              h4.question-heading
-                span.question-name #{acc(locals.data["question-label"])}&nbsp;
-                span.question-value ( #{index+1} / #{locals.data.questions.length} )
-              .question=question.question
-              ul.answers
-                each answer,index in question.answers
-                  li
-                    if answer.img
-                      - var img=IMAGE_PATH+answer.img;
-                      a(data-content="<img src=\"#{img}\">" style="background-image: url('#{img}')")=letters[index].toUpperCase()+". "+answer.label
-                    else
-                      a(href="javascript:")=letters[index].toUpperCase()+". "+answer.label
-            .right-panel
-              .image-container
-                img(src=IMAGE_PATH+question.image)
+    .pages
+      .home.page
+        include pages/home
+      .quiz.page
+        include pages/quiz
 
     script(type="text/javascript", src="assets/js/main.js" async)
