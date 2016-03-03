@@ -4,6 +4,7 @@ mixin breadcrumb (options)
   - var body = options.body || '<p>One fine body…</p>';
   - var closeButtonLabel = options.closeButtonLabel || 'Close';
   - var saveButtonLabel = options.saveButtonLabel || 'Save changes';
+  - var showFooter = options.showFooter || true;
 
   .modal.fade(tabindex='-1', role='dialog')
     .modal-dialog
@@ -13,6 +14,7 @@ mixin breadcrumb (options)
             span(aria-hidden='true') ×
           h4.modal-title=title
         .modal-body=body
-        .modal-footer
-          button.btn.btn-default(type='button', data-dismiss='modal')=closeButtonLabel
-          button.btn.btn-primary(type='button')=saveButtonLabel
+        if showFooter
+          .modal-footer
+            button.btn.btn-default(type='button', data-dismiss='modal')=closeButtonLabel
+            button.btn.btn-primary(type='button')=saveButtonLabel
