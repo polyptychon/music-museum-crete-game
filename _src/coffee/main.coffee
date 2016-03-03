@@ -74,10 +74,13 @@ $('#finishModal .btn.save-button').bind('click', ()->
   $('.page').each(()->
     $(this).attr('style', '')
   )
+  $('.question-container.active').removeClass('active')
+  $('.question-container').first().addClass('active')
   $('.question-container').each(()->
     $(this).attr('style', '')
   )
   $('.quiz .answers a').each(()->
+    $(this).removeClass('disabled').removeClass('success').removeClass('error')
     $(this).attr('style', '')
   )
   gotoPage($('.quiz.page'), $('.home.page'))
@@ -86,9 +89,11 @@ $('#finishModal .btn.save-button').bind('click', ()->
 gotoPage = (activePage, nextPage)->
   return if nextPage.length==0 || activePage.length==0
 
+  nextPage.attr('style', '')
   nextPage.css('display', 'block')
 
   setTimeout(()->
+    activePage.attr('style', '')
     activePage.removeClass('active')
     activePage.css('top', '-100%')
     nextPage.addClass('active')
