@@ -324,7 +324,7 @@ gulp.task('build', function() {
 gulp.task('server', ['connect', 'watch']);
 gulp.task('production', function() {
   env = PRODUCTION;
-  runSequence(['clean-json','clean-images','clean-sounds','clean-css', 'clean-js','images','sounds','json', 'fonts','coffee','sass','jade']);
+  runSequence(['clean-json','clean-images','clean-sounds','clean-css', 'clean-js'],['images','sounds','json','fonts'],['coffee','sass'],['jade']);
 });
 
 //gulp watch --jade=filename
