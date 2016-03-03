@@ -1,0 +1,18 @@
+mixin breadcrumb (options)
+  - var options = options || {};
+  - var title = options.title || 'Modal title';
+  - var body = options.body || '<p>One fine body…</p>';
+  - var closeButtonLabel = options.closeButtonLabel || 'Close';
+  - var saveButtonLabel = options.saveButtonLabel || 'Save changes';
+
+  .modal.fade(tabindex='-1', role='dialog')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label=closeButtonLabel)
+            span(aria-hidden='true') ×
+          h4.modal-title=title
+        .modal-body=body
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal')=closeButtonLabel
+          button.btn.btn-primary(type='button')=saveButtonLabel
