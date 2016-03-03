@@ -2,6 +2,7 @@
 - var brandName = locals.data.title;
 - var pageTitle = brandName;
 - var letters = ['α','β','γ','δ','ε','ζ','η','θ','ι','κ','λ','μ','ν','ξ','ο','π','ρ','σ','τ','υ','φ','χ','ψ','ω']
+- var IMAGE_PATH = "assets/images/";
 doctype html
 html
   head
@@ -16,7 +17,7 @@ html
               span.score-value 0 / #{locals.data.questions.length*4}
       .container
         each question,index in locals.data.questions
-          .question-container(class=index==0?"active":"")
+          .question-container(class=index==6?"active":"")
             .left-panel
               h4.question-heading
                 span.question-name #{locals.data["question-label"]}&nbsp;
@@ -26,12 +27,12 @@ html
                 each answer,index in question.answers
                   li
                     if answer.img
-                      - var img="assets/images/"+answer.img;
-                      a(data-content="<img src=\"#{img}\">")=letters[index].toUpperCase()+". "+answer.label
+                      - var img=IMAGE_PATH+answer.img;
+                      a(data-content="<img src=\"#{img}\">" style="background-image: url('#{img}')")=letters[index].toUpperCase()+". "+answer.label
                     else
                       a(href="javascript:")=letters[index].toUpperCase()+". "+answer.label
             .right-panel
               .image-container
-                img(src="assets/images/"+question.image)
+                img(src=IMAGE_PATH+question.image)
 
     script(type="text/javascript", src="assets/js/main.js" async)

@@ -105,6 +105,7 @@ header {
     color: $body-bg;
     font-size: 17px;
     transition: all .4s ease-out;
+    background: no-repeat -100% -100%;
     &:after {
       content: "";
       display: block;
