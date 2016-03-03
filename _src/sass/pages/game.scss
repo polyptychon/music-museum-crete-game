@@ -29,6 +29,7 @@
   }
 }
 .home {
+  min-height: 621px;
   background: $gray-lighter url('../images/BG_Arxiki_Teliki.jpg') no-repeat center center;
   background-size: cover;
   padding: 0;
@@ -39,6 +40,7 @@
   }
   .left-panel, .right-panel {
     height: 100%;
+    min-height: 621px;
   }
   .left-panel {
     background: rgba($gray-dark, .7);
