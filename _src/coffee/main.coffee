@@ -52,9 +52,9 @@ $('.quiz .answers a').bind('click', ()->
     $(this).addClass('error').addClass('disabled')
 
   modal = if $(this).data('isCorrect') then $('#successModal') else $('#errorModal')
-  if $('.question-container.active').next().length==0
+  if $(this).data('isCorrect') && $('.question-container.active').next().length==0
     modal = $('#finishModal')
-    modal.find('.modal-body').html($('.quiz.page').data('endGameMessage'))
+    modal.find('.modal-body').html($(this).data('description') + '<br><hr><br>' + $('.quiz.page').data('endGameMessage'))
   else
     modal.find('.modal-body').html($(this).data('description'))
   modal.modal('show')
@@ -71,9 +71,15 @@ $('#errorModal .btn.save-button').bind('click', ()->
 
 $('#finishModal .btn.save-button').bind('click', ()->
   $('#finishModal').modal('hide')
-  $('.page').attr('style', '')
-  $('.question-container').attr('style', '')
-  $('.quiz .answers a').attr('style', '')
+  $('.page').each(()->
+    $(this).attr('style', '')
+  )
+  $('.question-container').each(()->
+    $(this).attr('style', '')
+  )
+  $('.quiz .answers a').each(()->
+    $(this).attr('style', '')
+  )
   gotoPage($('.quiz.page'), $('.home.page'))
 )
 
