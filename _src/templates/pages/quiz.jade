@@ -17,9 +17,9 @@ header
             li
               if answer.img
                 - var img=IMAGE_PATH+answer.img;
-                a(data-content="<img src=\"#{img}\">" style="background-image: url('#{img}')")=letters[index].toUpperCase()+". "+answer.label
+                a.btn(data-content="<img src=\"#{img}\">" style="background-image: url('#{img}')")=letters[index].toUpperCase()+". "+answer.label
               else
-                a(href="javascript:")=letters[index].toUpperCase()+". "+answer.label
+                a.btn(href="javascript:")=letters[index].toUpperCase()+". "+answer.label
       .right-panel
         .image-container
           img(src=IMAGE_PATH+question.image)

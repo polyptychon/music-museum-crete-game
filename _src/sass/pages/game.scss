@@ -154,6 +154,7 @@ header {
     font-size: 17px;
     transition: all .4s ease-out;
     background: no-repeat -100% -100%;
+    text-align: left;
     &:after {
       content: "";
       display: block;
