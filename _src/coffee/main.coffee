@@ -69,6 +69,14 @@ $('#errorModal .btn.save-button').bind('click', ()->
   $('#errorModal').modal('hide')
 )
 
+$('#finishModal .btn.save-button').bind('click', ()->
+  $('#finishModal').modal('hide')
+  $('.page').attr('style', '')
+  $('.question-container').attr('style', '')
+  $('.quiz .answers a').attr('style', '')
+  gotoPage($('.quiz.page'), $('.home.page'))
+)
+
 gotoPage = (activePage, nextPage)->
   return if nextPage.length==0 || activePage.length==0
 
