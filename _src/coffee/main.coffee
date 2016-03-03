@@ -31,7 +31,6 @@ $(window).bind('resize', ()->
 )
 
 $('.home .btn').bind('click', ()->
-#  $('.modal').modal('toggle')
   gotoPage($('.home.page'), $('.quiz.page'))
 )
 
@@ -44,7 +43,15 @@ $('.question-container').each(()->
 )
 
 $('.quiz .answers a').bind('click', ()->
-  gotoNextQuestion($(this).closest('.question-container'))
+  $(this).addClass('disabled')
+  $('.answers a').popover('hide')
+  $('#successModal').modal('toggle')
+#  gotoNextQuestion($(this).closest('.question-container'))
+)
+
+$('#successModal .btn.save-button').bind('click', ()->
+  $('#successModal').modal('hide')
+  gotoNextQuestion($('.question-container.active'))
 )
 
 gotoPage = (activePage, nextPage)->

@@ -1,14 +1,15 @@
 mixin modal (options)
   - var options = options || {};
+  - var id = options.id || 'myModal';
   - var title = options.title || 'Modal title';
-  - var body = options.body || '<p>One fine body…</p>';
+  - var body = options.body || '<p>Μπράβο! Η παρέα καθορίζει την κοινωνική και πολιτισμική πρακτική των πανηγυριών καθώς οι συμμετέχοντες επικοινωνούν, κοινωνικοποιούνται και αλληλεπιδρούν συλλογικά μέσω παραδοσιακών, μουσικοχορευτικών δρώμενων και διαδικασιών.</p>';
   - var closeButtonLabel = options.closeButtonLabel || 'Close';
   - var saveButtonLabel = options.saveButtonLabel || 'Save changes';
   - var showFooter = options.showFooter==null ? true : options.showFooter;
   - var showTitle = options.showTitle==null ? true : options.showTitle;
   - var showCloseButton = options.showCloseButton==null ? true : options.showCloseButton;
 
-  .modal.fade(tabindex='-1', role='dialog')
+  .modal.fade(tabindex='-1', role='dialog' id=id)
     .modal-dialog
       .modal-content
         .modal-header
@@ -20,5 +21,6 @@ mixin modal (options)
         .modal-body!=body
         if showFooter
           .modal-footer
-            button.btn.btn-default(type='button', data-dismiss='modal')=closeButtonLabel
-            button.btn.btn-primary(type='button')=saveButtonLabel
+            if showCloseButton
+              button.btn.btn-default.cancel-button(type='button', data-dismiss='modal')=closeButtonLabel
+            button.btn.btn-primary.save-button(type='button')=saveButtonLabel

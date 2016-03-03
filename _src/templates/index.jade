@@ -16,5 +16,6 @@ html
       .quiz.page
         include pages/quiz
 
-    +modal({showTitle:false})
+    +modal({showTitle:false, id:"errorModal"})
+    +modal({showCloseButton:false, showTitle:false, id:"successModal", saveButtonLabel:locals.data["next-question-button-label"]})
     script(type="text/javascript", src="assets/js/main.js" async)
