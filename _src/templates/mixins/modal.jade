@@ -10,8 +10,9 @@ mixin modal (options)
   - var showCloseButton = options.showCloseButton==null ? true : options.showCloseButton;
   - var saveButtonClass = options.saveButtonClass || 'btn-primary';
   - var backdrop = options.backdrop || true
+  - var keyboard = options.keyboard==null ? true : options.keyboard;
 
-  .modal.fade(tabindex='-1', role='dialog' id=id data-backdrop=backdrop)
+  .modal.fade(tabindex='-1', role='dialog' id=id data-backdrop=backdrop data-keyboard=keyboard)
     .modal-dialog
       .modal-content
         .modal-header

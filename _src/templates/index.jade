@@ -17,6 +17,6 @@ html
         include pages/quiz
 
     +modal({showCloseButton:true, showTitle:false, id:"errorModal", saveButtonClass:"btn-danger", saveButtonLabel:locals.data["error-button-label"]})
-    +modal({backdrop:"static", showCloseButton:false, showTitle:false, id:"successModal", saveButtonLabel:locals.data["next-question-button-label"]})
-    +modal({backdrop:"static",showCloseButton:false, showTitle:false, id:"finishModal", saveButtonLabel:locals.data["restart-game-button-label"]})
+    +modal({keyboard:"false", backdrop:"static", showCloseButton:false, showTitle:false, id:"successModal", saveButtonLabel:locals.data["next-question-button-label"]})
+    +modal({keyboard:"false", backdrop:"static",showCloseButton:false, showTitle:false, id:"finishModal", saveButtonLabel:locals.data["restart-game-button-label"]})
     script(type="text/javascript", src="assets/js/main.js" async)
