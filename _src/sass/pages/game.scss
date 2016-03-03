@@ -27,8 +27,8 @@
 .page {
   position: absolute;
   top: 100%;
-  transition: top .4s ease-out;
-  display: none;
+  transition: .5s all ease-out;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   min-height: 621px;
   &.active {
     top: 0;

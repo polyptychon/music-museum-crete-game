@@ -27,3 +27,9 @@ setImagePopovers()
 $(window).bind('resize', ()->
   setImagePopovers()
 )
+
+$('.home .btn').bind('click', ()->
+  $('.home.page').removeClass('active')
+  $('.home.page').css('top', '-100%')
+  $('.quiz.page').addClass('active')
+)
