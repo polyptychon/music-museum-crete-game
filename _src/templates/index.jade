@@ -1,5 +1,5 @@
 - var mainMenuActiveIndex = -1;
-- var brandName = "ΓΝΩΡΙΖΟΝΤΑΣ ΤΗ ΜΟΥΣΙΚΗ ΚΑΙ ΧΟΡΕΥΤΙΚΗ ΠΑΡΑΔΟΣΗ ΤΗΣ ΚΡΗΤΗΣ";
+- var brandName = locals.data.title;
 - var pageTitle = brandName;
 - var letters = ['α','β','γ','δ','ε','ζ','η','θ','ι','κ','λ','μ','ν','ξ','ο','π','ρ','σ','τ','υ','φ','χ','ψ','ω']
 doctype html
@@ -12,16 +12,16 @@ html
         .container
           .col-md-12
             .score
-              span.score-name ΒΑΘΜΟΛΟΓΙΑ&nbsp;&nbsp;
+              span.score-name #{locals.data["score-label"]}&nbsp;&nbsp;
               span.score-value 0 / #{locals.data.questions.length*4}
       .container
         each question,index in locals.data.questions
           .question-container(class=index==0?"active":"")
             .left-panel
               h4.question-heading
-                span.question-name ΕΡΩΤΗΣΗ&nbsp;
+                span.question-name #{locals.data["question-label"]}&nbsp;
                 span.question-value ( #{index+1} / #{locals.data.questions.length} )
-              .question Ποιός μουσικός από τους παρακάτω έπαιζε λαούτο
+              .question=question.label
               ul.answers
                 each answer,index in question.answers
                   li
