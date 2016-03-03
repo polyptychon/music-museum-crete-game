@@ -34,3 +34,25 @@ $('.home .btn').bind('click', ()->
   $('.home.page').css('top', '-100%')
   $('.quiz.page').addClass('active')
 )
+
+$('.question-container').each(()->
+  $(this).css('display', 'none') if !$(this).hasClass('active')
+)
+
+$('.quiz .answers a').bind('click', ()->
+  gotoNextQuestion($(this).closest('.question-container'))
+)
+
+gotoNextQuestion = (activeQuestion)->
+  return if activeQuestion.next().length==0
+
+  activeQuestion.next().css('display', 'block')
+  $('.answers a').popover('hide')
+  setTimeout(()->
+    activeQuestion.removeClass('active')
+    activeQuestion.css('left', '-100%')
+    activeQuestion.next().addClass('active')
+    setTimeout(()->
+      activeQuestion.css('display', 'none')
+    , 1000)
+  , 50)

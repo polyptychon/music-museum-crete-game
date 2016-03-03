@@ -188,7 +188,8 @@ header {
   width: 100%;
   left: 100%;
   padding: 0 15px;
-  transition: left .4s ease-out;
+  transition: .5s all ease-out;
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
   &.active {
     left: 0;
     display: block;
