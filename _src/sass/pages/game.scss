@@ -31,6 +31,30 @@
 .home {
   background: $gray-lighter url('../images/BG_Arxiki_Teliki.jpg') no-repeat center center;
   background-size: cover;
+  padding: 0;
+  .logo-icon {
+    position: absolute;
+    top: 50px;
+    left: 55px;
+  }
+  .left-panel, .right-panel {
+    height: 100%;
+  }
+  .left-panel {
+    background: rgba($gray-dark, .7);
+  }
+  .title {
+    font-size: 25px;
+    color: white;
+  }
+  .description {
+    font-size: 18px;
+  }
+  .title, .description {
+    margin-top: 200px;
+    padding: 0 40px;
+  }
+
 }
 .quiz {
   background: $gray-darker;
