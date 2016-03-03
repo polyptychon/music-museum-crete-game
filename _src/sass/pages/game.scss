@@ -52,33 +52,11 @@ header {
   height: 62px;
   color: $body-bg;
   font-size: 16px;
-  position: absolute;
-  top: 0;
-  z-index: 100;
-  overflow: hidden;
-  transition: height .4s ease-out, background-color .4s ease-out;
   .score {
     float: right;
   }
   .score-value {
     color: $gray-dark;
-  }
-  &.home, &:hover {
-    background: $gray-lighter url("../images/BG_Arxiki_Teliki.jpg") no-repeat center center;
-    background-size: auto;
-    .score {
-      display: none;
-    }
-    @media (min-width: $screen-md-min) {
-      width: $container-md;
-      height: 621px;
-      overflow: hidden;
-    }
-    @media (min-width: $screen-lg-min) {
-      width: $container-lg + 10px;
-      height: 633px;
-      overflow: hidden;
-    }
   }
 }
 .question-heading {
@@ -95,9 +73,6 @@ header {
     bottom: -10px;
     background: $body-bg;
   }
-}
-.quiz-container {
-  margin-top: 62px;
 }
 .question {
   padding: 15px 0;
