@@ -54,7 +54,7 @@ $('.quiz .answers a').bind('click', ()->
   modal = if $(this).data('isCorrect') then $('#successModal') else $('#errorModal')
   if $('.question-container.active').next().length==0
     modal = $('#finishModal')
-    modal.find('.modal-body').html('')
+    modal.find('.modal-body').html($('.quiz.page').data('endGameMessage'))
   else
     modal.find('.modal-body').html($(this).data('description'))
   modal.modal('show')

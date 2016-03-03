@@ -221,3 +221,15 @@ header {
 .modal-footer {
   //text-align: center;
 }
+#finishModal {
+  .modal-dialog {
+    max-width: 300px;
+  }
+  .modal-footer, .modal-body, .btn {
+    font-size: 18px;
+    text-align: center;
+  }
+  .modal-footer {
+    margin-bottom: 30px;
+  }
+}

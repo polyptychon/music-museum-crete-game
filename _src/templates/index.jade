@@ -13,7 +13,7 @@ html
     .pages
       .home.page.active
         include pages/home
-      .quiz.page
+      .quiz.page(data-end-game-message=locals.data["end-game-message"])
         include pages/quiz
 
     +modal({showCloseButton:true, showTitle:false, id:"errorModal", saveButtonClass:"btn-danger", saveButtonLabel:locals.data["error-button-label"]})
