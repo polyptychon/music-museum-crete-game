@@ -1,5 +1,6 @@
 global.$ = global.jQuery = $ = require "jquery"
 
+requestAnimFrame = require "animationframe"
 require "bootstrap/assets/javascripts/bootstrap/transition"
 require "bootstrap/assets/javascripts/bootstrap/tooltip"
 require "bootstrap/assets/javascripts/bootstrap/popover"

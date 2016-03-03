@@ -189,7 +189,6 @@ header {
   left: 100%;
   padding: 0 15px;
   transition: left .4s ease-out;
-  display: none;
   &.active {
     left: 0;
     display: block;
