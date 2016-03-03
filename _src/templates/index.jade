@@ -3,6 +3,7 @@
 - var pageTitle = brandName;
 - var letters = locals.data.letters
 - var IMAGE_PATH = "assets/images/";
+- var acc = locals.acc;
 doctype html
 html
   head
@@ -13,16 +14,16 @@ html
         .container
           .col-md-12
             .score
-              span.score-name #{locals.data["score-label"]}&nbsp;&nbsp;
+              span.score-name #{acc(locals.data["score-label"]).toUpperCase()}&nbsp;&nbsp;
               span.score-value 0 / #{locals.data.questions.length*4}
       .container
         each question,index in locals.data.questions
           .question-container(class=index==6?"active":"")
             .left-panel
               h4.question-heading
-                span.question-name #{locals.data["question-label"]}&nbsp;
+                span.question-name #{acc(locals.data["question-label"]).toUpperCase()}&nbsp;
                 span.question-value ( #{index+1} / #{locals.data.questions.length} )
-              .question=question.label
+              .question=question.question
               ul.answers
                 each answer,index in question.answers
                   li
