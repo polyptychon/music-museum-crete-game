@@ -6,13 +6,15 @@ mixin modal (options)
   - var saveButtonLabel = options.saveButtonLabel || 'Save changes';
   - var showFooter = options.showFooter==null ? true : options.showFooter;
   - var showTitle = options.showTitle==null ? true : options.showTitle;
+  - var showCloseButton = options.showCloseButton==null ? true : options.showCloseButton;
 
   .modal.fade(tabindex='-1', role='dialog')
     .modal-dialog
       .modal-content
         .modal-header
-          button.close(type='button', data-dismiss='modal', aria-label=closeButtonLabel)
-            span(aria-hidden='true') ×
+          if showCloseButton
+            button.close(type='button', data-dismiss='modal', aria-label=closeButtonLabel)
+              span(aria-hidden='true') ×
           if showTitle
             h4.modal-title=title
         .modal-body!=body
