@@ -30,9 +30,11 @@ $(window).bind('resize', ()->
 )
 
 $('.home .btn').bind('click', ()->
-  $('.home.page').removeClass('active')
-  $('.home.page').css('top', '-100%')
-  $('.quiz.page').addClass('active')
+  gotoPage($('.home.page'), $('.quiz.page'))
+)
+
+$('.page').each(()->
+  $(this).css('display', 'none') if !$(this).hasClass('active')
 )
 
 $('.question-container').each(()->
@@ -42,6 +44,21 @@ $('.question-container').each(()->
 $('.quiz .answers a').bind('click', ()->
   gotoNextQuestion($(this).closest('.question-container'))
 )
+
+gotoPage = (activePage, nextPage)->
+  return if nextPage.length==0 || activePage.length==0
+
+  nextPage.css('display', 'block')
+
+  setTimeout(()->
+    activePage.removeClass('active')
+    activePage.css('top', '-100%')
+    nextPage.addClass('active')
+
+    setTimeout(()->
+      activePage.css('display', 'none')
+    , 1000)
+  , 50)
 
 gotoNextQuestion = (activeQuestion)->
   return if activeQuestion.next().length==0
