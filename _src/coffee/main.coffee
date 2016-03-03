@@ -58,6 +58,7 @@ $('.quiz .answers a').bind('click', ()->
   else
     modal.find('.modal-body').html($(this).data('description'))
   modal.modal('show')
+  centerModal(modal, $('.page.active'))
 )
 
 $('#successModal .btn.save-button').bind('click', ()->
@@ -116,3 +117,9 @@ gotoNextQuestion = (activeQuestion)->
       activeQuestion.css('display', 'none')
     , 1000)
   , 50)
+
+centerModal = (modal, element)->
+  setTimeout(()->
+    dialog = modal.find('.modal-dialog')
+    dialog.css('transform', "translate(0, #{(element.height()-dialog.height())/2}px)");
+  , 150)

@@ -212,9 +212,6 @@ header {
 .modal-dialog {
   max-width: 500px;
 }
-.modal-dialog {
-  margin-top: 200px;
-}
 .modal-header {
   text-align: left;
 }
@@ -227,7 +224,6 @@ header {
 }
 #finishModal {
   .modal-dialog {
-    margin-top: 100px;
     max-width: 400px;
   }
   .modal-footer, .modal-body, .btn {
