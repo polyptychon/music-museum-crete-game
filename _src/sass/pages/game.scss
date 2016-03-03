@@ -22,6 +22,12 @@
     overflow: hidden;
   }
 }
+.page {
+  display: none;
+  &.active {
+    display: block;
+  }
+}
 .home {
   background: $gray-lighter url('../images/BG_Arxiki_Teliki.jpg');
 }
