@@ -18,7 +18,7 @@ html
               span.score-value 0 / #{locals.data.questions.length*4}
       .container
         each question,index in locals.data.questions
-          .question-container(class=index==6?"active":"")
+          .question-container(class=index==0?"active":"")
             .left-panel
               h4.question-heading
                 span.question-name #{acc(locals.data["question-label"])}&nbsp;
