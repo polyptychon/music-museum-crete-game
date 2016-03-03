@@ -14,14 +14,14 @@ html
         .container
           .col-md-12
             .score
-              span.score-name #{acc(locals.data["score-label"]).toUpperCase()}&nbsp;&nbsp;
+              span.score-name #{acc(locals.data["score-label"])}&nbsp;&nbsp;
               span.score-value 0 / #{locals.data.questions.length*4}
       .container
         each question,index in locals.data.questions
           .question-container(class=index==6?"active":"")
             .left-panel
               h4.question-heading
-                span.question-name #{acc(locals.data["question-label"]).toUpperCase()}&nbsp;
+                span.question-name #{acc(locals.data["question-label"])}&nbsp;
                 span.question-value ( #{index+1} / #{locals.data.questions.length} )
               .question=question.question
               ul.answers

@@ -70,7 +70,7 @@ var acc = function (t) {
   t = t.replace(/ΰ/g, "υ");
   t = t.replace(/Ώ/g, "Ω");
   t = t.replace(/ώ/g, "ω");
-  return t;
+  return t.toUpperCase();
 };
 
 var env = process.env.NODE_ENV || DEVELOPMENT;
