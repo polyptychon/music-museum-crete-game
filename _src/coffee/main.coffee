@@ -46,6 +46,7 @@ $('.quiz .answers a').bind('click', ()->
   $('.answers a').popover('hide')
 
   if $(this).data('isCorrect')
+    $('.question-container.active .answers a').addClass('disabled')
     $(this).addClass('success')
   else
     $(this).addClass('error').addClass('disabled')
