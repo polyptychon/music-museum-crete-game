@@ -4,7 +4,8 @@ mixin modal (options)
   - var body = options.body || '<p>One fine body…</p>';
   - var closeButtonLabel = options.closeButtonLabel || 'Close';
   - var saveButtonLabel = options.saveButtonLabel || 'Save changes';
-  - var showFooter = options.showFooter || true;
+  - var showFooter = options.showFooter==null ? true : options.showFooter;
+  - var showTitle = options.showTitle==null ? true : options.showTitle;
 
   .modal.fade(tabindex='-1', role='dialog')
     .modal-dialog
@@ -12,8 +13,9 @@ mixin modal (options)
         .modal-header
           button.close(type='button', data-dismiss='modal', aria-label=closeButtonLabel)
             span(aria-hidden='true') ×
-          h4.modal-title=title
-        .modal-body=body
+          if showTitle
+            h4.modal-title=title
+        .modal-body!=body
         if showFooter
           .modal-footer
             button.btn.btn-default(type='button', data-dismiss='modal')=closeButtonLabel

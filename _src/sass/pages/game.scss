@@ -195,3 +195,9 @@ header {
     display: block;
   }
 }
+.modal-dialog {
+  margin-top: 200px;
+}
+.modal-header, .modal-footer {
+  border: none;
+}

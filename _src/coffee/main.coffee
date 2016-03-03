@@ -31,7 +31,8 @@ $(window).bind('resize', ()->
 )
 
 $('.home .btn').bind('click', ()->
-  gotoPage($('.home.page'), $('.quiz.page'))
+  $('.modal').modal('toggle')
+#  gotoPage($('.home.page'), $('.quiz.page'))
 )
 
 $('.page').each(()->
