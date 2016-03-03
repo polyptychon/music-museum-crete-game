@@ -34,13 +34,15 @@ $('.home .btn').bind('click', ()->
   gotoPage($('.home.page'), $('.quiz.page'))
 )
 
-$('.page').each(()->
-  $(this).css('display', 'none') if !$(this).hasClass('active')
-)
+hideHiddenElements = ()->
+  $('.page').each(()->
+    $(this).css('display', 'none') if !$(this).hasClass('active')
+  )
+  $('.question-container').each(()->
+    $(this).css('display', 'none') if !$(this).hasClass('active')
+  )
 
-$('.question-container').each(()->
-  $(this).css('display', 'none') if !$(this).hasClass('active')
-)
+hideHiddenElements()
 
 $('.quiz .answers a').bind('click', ()->
   $('.answers a').popover('hide')
@@ -71,7 +73,12 @@ $('#errorModal .btn.save-button').bind('click', ()->
 )
 
 $('#finishModal .btn.save-button').bind('click', ()->
-  $('#finishModal').modal('hide')
+  reset()
+  gotoPage($('.quiz.page'), $('.home.page'))
+)
+
+reset = ()->
+  $('.modal').modal('hide')
   $('.page').each(()->
     $(this).attr('style', '')
   )
@@ -84,8 +91,7 @@ $('#finishModal .btn.save-button').bind('click', ()->
     $(this).removeClass('disabled').removeClass('success').removeClass('error')
     $(this).attr('style', '')
   )
-  gotoPage($('.quiz.page'), $('.home.page'))
-)
+  hideHiddenElements()
 
 gotoPage = (activePage, nextPage)->
   return if nextPage.length==0 || activePage.length==0
