@@ -43,8 +43,12 @@ $('.question-container').each(()->
 )
 
 $('.quiz .answers a').bind('click', ()->
-  $(this).addClass('disabled')
   $('.answers a').popover('hide')
+
+  if $(this).data('isCorrect')
+    $(this).addClass('success')
+  else
+    $(this).addClass('error').addClass('disabled')
 
   modal = if $(this).data('isCorrect') then $('#successModal') else $('#errorModal')
   modal.find('.modal-body').html($(this).data('description'))
