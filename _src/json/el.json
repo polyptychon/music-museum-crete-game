@@ -4,8 +4,9 @@
   "score-label": "Βαθμολογία",
   "question-label": "Ερώτηση",
   "start-button-label": "Έναρξη",
-  "error-button-label": "Δοκίμασε ξανά",
+  "error-button-label": "Ξαναπροσπάθησε!",
   "next-question-button-label": "Επόμενη Ερώτηση",
+  "restart-game-button-label": "Έναρξη",
   "letters":["α","β","γ","δ","ε","ζ","η","θ","ι","κ","λ","μ","ν","ξ","ο","π","ρ","σ","τ","υ","φ","χ","ψ","ω"],
   "questions":[
     {

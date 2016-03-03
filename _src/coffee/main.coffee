@@ -51,7 +51,11 @@ $('.quiz .answers a').bind('click', ()->
     $(this).addClass('error').addClass('disabled')
 
   modal = if $(this).data('isCorrect') then $('#successModal') else $('#errorModal')
-  modal.find('.modal-body').html($(this).data('description'))
+  if $('.question-container.active').next().length==0
+    modal = $('#finishModal')
+    modal.find('.modal-body').html('')
+  else
+    modal.find('.modal-body').html($(this).data('description'))
   modal.modal('show')
 )
 
