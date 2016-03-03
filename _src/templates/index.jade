@@ -1,3 +1,4 @@
+include mixins/modal
 - var mainMenuActiveIndex = -1;
 - var brandName = locals.data.title;
 - var pageTitle = brandName;
@@ -15,4 +16,5 @@ html
       .quiz.page
         include pages/quiz
 
+    +modal()
     script(type="text/javascript", src="assets/js/main.js" async)
