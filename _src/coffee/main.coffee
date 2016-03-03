@@ -45,13 +45,16 @@ $('.question-container').each(()->
 $('.quiz .answers a').bind('click', ()->
   $(this).addClass('disabled')
   $('.answers a').popover('hide')
-  $('#successModal').modal('toggle')
-#  gotoNextQuestion($(this).closest('.question-container'))
+  $('#errorModal').modal('toggle')
 )
 
 $('#successModal .btn.save-button').bind('click', ()->
   $('#successModal').modal('hide')
   gotoNextQuestion($('.question-container.active'))
+)
+
+$('#errorModal .btn.save-button').bind('click', ()->
+  $('#errorModal').modal('hide')
 )
 
 gotoPage = (activePage, nextPage)->

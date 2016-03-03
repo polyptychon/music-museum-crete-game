@@ -8,6 +8,7 @@ mixin modal (options)
   - var showFooter = options.showFooter==null ? true : options.showFooter;
   - var showTitle = options.showTitle==null ? true : options.showTitle;
   - var showCloseButton = options.showCloseButton==null ? true : options.showCloseButton;
+  - var saveButtonClass = options.saveButtonClass || 'btn-primary';
 
   .modal.fade(tabindex='-1', role='dialog' id=id)
     .modal-dialog
@@ -23,4 +24,4 @@ mixin modal (options)
           .modal-footer
             if showCloseButton
               button.btn.btn-default.cancel-button(type='button', data-dismiss='modal')=closeButtonLabel
-            button.btn.btn-primary.save-button(type='button')=saveButtonLabel
+            button.btn.save-button(type='button' class=saveButtonClass)=saveButtonLabel
