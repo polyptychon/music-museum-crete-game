@@ -10,13 +10,13 @@ html
     include partials/header
   body
     .quiz
-      header
+      header.home
         .container
           .col-md-12
             .score
               span.score-name #{acc(locals.data["score-label"])}&nbsp;&nbsp;
               span.score-value 0 / #{locals.data.questions.length*4}
-      .container
+      .container.quiz-container
         each question,index in locals.data.questions
           .question-container(class=index==0?"active":"")
             .left-panel

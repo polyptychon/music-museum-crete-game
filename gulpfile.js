@@ -319,7 +319,7 @@ gulp.task('live', ['json', 'coffee', 'jade', 'sass', 'watch']);
 gulp.task('editor', ['editorSass']);
 
 gulp.task('build', function() {
-  runSequence(['fonts','images','sounds','spriteSass','autoVariables'],['json', 'fonts','coffee','sass'],['jade']);
+  runSequence(['clean-images'],['fonts','images','sounds','spriteSass','autoVariables'],['json', 'fonts','coffee','sass'],['jade']);
 });
 gulp.task('server', ['connect', 'watch']);
 gulp.task('production', function() {
