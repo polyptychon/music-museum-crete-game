@@ -45,7 +45,10 @@ $('.question-container').each(()->
 $('.quiz .answers a').bind('click', ()->
   $(this).addClass('disabled')
   $('.answers a').popover('hide')
-  $('#errorModal').modal('toggle')
+
+  modal = if $(this).data('isCorrect') then $('#successModal') else $('#errorModal')
+  modal.find('.modal-body').html($(this).data('description'))
+  modal.modal('show')
 )
 
 $('#successModal .btn.save-button').bind('click', ()->

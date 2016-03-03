@@ -15,11 +15,12 @@ header
         ul.answers
           each answer,index in question.answers
             li
+              - var isCorrect = answer["is-correct"]?"true":"false"
               if answer.img
-                - var img=IMAGE_PATH+answer.img;
-                a.btn(data-content="<img src=\"#{img}\">" style="background-image: url('#{img}')")=letters[index].toUpperCase()+". "+answer.label
+                - var img=answer.img?IMAGE_PATH+answer.img:"";
+                a.btn(data-description=answer.description data-is-correct=isCorrect data-content="<img src=\"#{img}\">" style="background-image: url('#{img}')")=letters[index].toUpperCase()+". "+answer.label
               else
-                a.btn(href="javascript:")=letters[index].toUpperCase()+". "+answer.label
+                a.btn(data-description=answer.description data-is-correct=isCorrect href="javascript:")=letters[index].toUpperCase()+". "+answer.label
       .right-panel
         .image-container
           img(src=IMAGE_PATH+question.image)
