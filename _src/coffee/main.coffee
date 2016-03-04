@@ -12,6 +12,19 @@ require "bootstrap/assets/javascripts/bootstrap/modal"
 #require "bootstrap/assets/javascripts/bootstrap/carousel"
 #require "bootstrap/assets/javascripts/bootstrap/tooltip"
 
+
+init = ()->
+  setImagePopovers()
+  $(window).bind('resize', ()->
+    setImagePopovers()
+  )
+
+  $('.home .btn').bind('click', ()->
+    gotoPage($('.home.page'), $('.quiz.page'))
+  )
+  hideHiddenElements()
+  setScore()
+
 setImagePopovers = ()->
   if $(window).width()>991
     $('.answers a').popover({
@@ -25,15 +38,6 @@ setImagePopovers = ()->
   else
     $('.answers a').popover('destroy')
 
-setImagePopovers()
-$(window).bind('resize', ()->
-  setImagePopovers()
-)
-
-$('.home .btn').bind('click', ()->
-  gotoPage($('.home.page'), $('.quiz.page'))
-)
-
 hideHiddenElements = ()->
   $('.page').each(()->
     $(this).css('display', 'none') if !$(this).hasClass('active')
@@ -42,7 +46,7 @@ hideHiddenElements = ()->
     $(this).css('display', 'none') if !$(this).hasClass('active')
   )
 
-hideHiddenElements()
+
 
 $('.quiz .answers a').bind('click', ()->
   $('.answers a').popover('hide')
@@ -50,7 +54,7 @@ $('.quiz .answers a').bind('click', ()->
   if $(this).data('isCorrect')
     $('.question-container.active .answers a').addClass('disabled')
     $(this).addClass('success')
-    $('.score-value').html "#{calculateScore()} / #{totalAswers()}"
+    setScore()
   else
     $(this).addClass('error').addClass('disabled')
 
@@ -58,7 +62,7 @@ $('.quiz .answers a').bind('click', ()->
   if $(this).data('isCorrect') && $('.question-container.active').next().length==0
     modal = $('#finishModal')
     modal.find('.modal-body').html($(this).data('description') + '<br><hr><br>' + $('.quiz.page').data('endGameMessage'))
-    $('.score-value').html "#{calculateScore()} / #{totalAswers()}"
+    setScore()
   else
     modal.find('.modal-body').html($(this).data('description'))
   modal.modal('show')
@@ -144,3 +148,6 @@ calculateScore = ()->
   return score
 
 totalAswers = ()->  return $('.question-container .answers a').length
+setScore = ()-> $('.score-value').html "#{calculateScore()} / #{totalAswers()}"
+
+init()
