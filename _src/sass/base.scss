@@ -106,7 +106,7 @@ video {
   top: 43%;
   left: 47%;
   color: $brand-primary;
-  text-shadow: 1px 1px $gray;
+  //text-shadow: 1px 1px $gray;
   font-size: 100px;
   opacity: 1;
   transform: translate(-50%, -50%), scale(0,0);
@@ -127,7 +127,7 @@ video {
     opacity: 1;
   }
   50% {
-    transform: scale(2,2);
+    transform: scale(3,3);
     opacity: .7;
   }
   100% {
