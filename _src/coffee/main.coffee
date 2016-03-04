@@ -50,6 +50,7 @@ $('.quiz .answers a').bind('click', ()->
   if $(this).data('isCorrect')
     $('.question-container.active .answers a').addClass('disabled')
     $(this).addClass('success')
+    $('.score-value').html "#{calculateScore()} / #{totalAswers()}"
   else
     $(this).addClass('error').addClass('disabled')
 
@@ -130,3 +131,15 @@ centerModal = (modal, element)->
     dialog = modal.find('.modal-dialog')
     dialog.css('transform', "translate(0, #{(element.height()-dialog.height())/2}px)");
   , 150)
+
+calculateScore = ()->
+  score = 0
+  $('.question-container').each(()->
+    if $(this).find('.answers a.success').length>0
+      totalAnswers = $(this).find('.answers a').length
+      errorAnswers = $(this).find('.answers a.error').length
+      score += totalAnswers-errorAnswers
+  )
+  return score
+
+totalAswers = ()->  return $('.question-container .answers a').length
