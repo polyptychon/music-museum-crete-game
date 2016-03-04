@@ -234,3 +234,14 @@ header {
     max-width: 400px;
   }
 }
+.btn-primary {
+  &.active.focus, &.active:focus, &.focus, &:active.focus, &:active:focus, &:focus {
+    outline: 5px auto darken($brand-primary, 20%);
+  }
+}
+
+.btn-danger {
+  &.active.focus, &.active:focus, &.focus, &:active.focus, &:active:focus, &:focus {
+    outline: 5px auto darken($brand-danger, 20%);
+  }
+}
