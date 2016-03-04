@@ -14,14 +14,44 @@ require "bootstrap/assets/javascripts/bootstrap/modal"
 
 
 init = ()->
-  setImagePopovers()
   $(window).bind('resize', ()->
     setImagePopovers()
   )
-
   $('.home .btn').bind('click', ()->
     gotoPage($('.home.page'), $('.quiz.page'))
   )
+  $('#successModal .btn.save-button').bind('click', ()->
+    $('#successModal').modal('hide')
+    gotoNextQuestion($('.question-container.active'))
+  )
+  $('#errorModal .btn.save-button').bind('click', ()->
+    $('#errorModal').modal('hide')
+  )
+  $('#finishModal .btn.save-button').bind('click', ()->
+    reset()
+    gotoPage($('.quiz.page'), $('.home.page'))
+  )
+  $('.quiz .answers a').bind('click', ()->
+    $('.answers a').popover('hide')
+
+    if $(this).data('isCorrect')
+      $('.question-container.active .answers a').addClass('disabled')
+      $(this).addClass('success')
+      setScore()
+    else
+      $(this).addClass('error').addClass('disabled')
+
+    modal = if $(this).data('isCorrect') then $('#successModal') else $('#errorModal')
+    if $(this).data('isCorrect') && $('.question-container.active').next().length==0
+      modal = $('#finishModal')
+      modal.find('.modal-body').html($(this).data('description') + '<br><hr><br>' + $('.quiz.page').data('endGameMessage'))
+      setScore()
+    else
+      modal.find('.modal-body').html($(this).data('description'))
+    modal.modal('show')
+    centerModal(modal, $('.page.active'))
+  )
+  setImagePopovers()
   hideHiddenElements()
   setScore()
 
@@ -45,43 +75,6 @@ hideHiddenElements = ()->
   $('.question-container').each(()->
     $(this).css('display', 'none') if !$(this).hasClass('active')
   )
-
-
-
-$('.quiz .answers a').bind('click', ()->
-  $('.answers a').popover('hide')
-
-  if $(this).data('isCorrect')
-    $('.question-container.active .answers a').addClass('disabled')
-    $(this).addClass('success')
-    setScore()
-  else
-    $(this).addClass('error').addClass('disabled')
-
-  modal = if $(this).data('isCorrect') then $('#successModal') else $('#errorModal')
-  if $(this).data('isCorrect') && $('.question-container.active').next().length==0
-    modal = $('#finishModal')
-    modal.find('.modal-body').html($(this).data('description') + '<br><hr><br>' + $('.quiz.page').data('endGameMessage'))
-    setScore()
-  else
-    modal.find('.modal-body').html($(this).data('description'))
-  modal.modal('show')
-  centerModal(modal, $('.page.active'))
-)
-
-$('#successModal .btn.save-button').bind('click', ()->
-  $('#successModal').modal('hide')
-  gotoNextQuestion($('.question-container.active'))
-)
-
-$('#errorModal .btn.save-button').bind('click', ()->
-  $('#errorModal').modal('hide')
-)
-
-$('#finishModal .btn.save-button').bind('click', ()->
-  reset()
-  gotoPage($('.quiz.page'), $('.home.page'))
-)
 
 reset = ()->
   $('.answers a').popover('hide')
