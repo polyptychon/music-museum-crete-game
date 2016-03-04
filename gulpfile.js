@@ -314,6 +314,7 @@ gulp.task('connect', function() {
     }));
 });
 
+gulp.task('clean', ['clean-json','clean-images','clean-sounds','clean-css', 'clean-js']);
 gulp.task('default', ['json', 'coffee', 'sass', 'jade']);
 gulp.task('live', ['json', 'coffee', 'jade', 'sass', 'watch']);
 gulp.task('editor', ['editorSass']);
