@@ -1,6 +1,8 @@
 global.$ = global.jQuery = $ = require "jquery"
 
 requestAnimFrame = require "animationframe"
+require "./preloadjs-0.6.2.min"
+require "./soundjs-0.6.2.min"
 require "bootstrap/assets/javascripts/bootstrap/transition"
 require "bootstrap/assets/javascripts/bootstrap/tooltip"
 require "bootstrap/assets/javascripts/bootstrap/popover"
@@ -11,9 +13,6 @@ require "bootstrap/assets/javascripts/bootstrap/modal"
 #require "bootstrap/assets/javascripts/bootstrap/collapse"
 #require "bootstrap/assets/javascripts/bootstrap/carousel"
 #require "bootstrap/assets/javascripts/bootstrap/tooltip"
-require "./preloadjs-0.6.2.min"
-require "./soundjs-0.6.2.min"
-
 
 init = ()->
   $(window).bind('resize', ()->

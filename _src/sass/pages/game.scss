@@ -265,3 +265,7 @@ header {
     outline: 5px auto darken($brand-danger, 20%);
   }
 }
+.text-primary {
+  color: darken($brand-primary, 10%)
+  font-size: 20px;
+}
