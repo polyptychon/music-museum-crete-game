@@ -8,6 +8,7 @@ mixin modal (options)
   - var showFooter = options.showFooter==null ? true : options.showFooter;
   - var showTitle = options.showTitle==null ? true : options.showTitle;
   - var showCloseButton = options.showCloseButton==null ? true : options.showCloseButton;
+  - var showFooterCloseButton = options.showFooterCloseButton==null ? true : options.showFooterCloseButton;
   - var saveButtonClass = options.saveButtonClass || 'btn-primary';
   - var backdrop = options.backdrop || true
   - var keyboard = options.keyboard==null ? true : options.keyboard;
@@ -27,6 +28,6 @@ mixin modal (options)
         .modal-body!=body
         if showFooter
           .modal-footer
-            //if showCloseButton
-            //  button.btn.btn-default.cancel-button(type='button', data-dismiss='modal')=closeButtonLabel
+            if showFooterCloseButton
+              button.btn.btn-default.cancel-button(type='button', data-dismiss='modal')=closeButtonLabel
             button.btn.save-button(type='button' class=saveButtonClass)=saveButtonLabel
