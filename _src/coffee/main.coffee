@@ -48,8 +48,18 @@ init = ()->
       setScore()
     else
       modal.find('.modal-body').html($(this).data('description'))
-    modal.modal('show')
-    centerModal(modal, $('.page.active'))
+
+    if $(this).data('isCorrect')
+      $('.current-score').html "+#{getCurrentScore()}"
+      $('.current-score').addClass('visible').removeClass('hidden')
+      setTimeout(()->
+        modal.modal('show')
+        centerModal(modal, $('.page.active'))
+        $('.current-score').removeClass('visible').addClass('hidden')
+      , 1000)
+    else
+      modal.modal('show')
+      centerModal(modal, $('.page.active'))
   )
   setImagePopovers()
   hideHiddenElements()
@@ -129,6 +139,9 @@ centerModal = (modal, element)->
     dialog = modal.find('.modal-dialog')
     dialog.css('transform', "translate(0, #{(element.height()-dialog.height())/2}px)");
   , 150)
+
+getCurrentScore = ()->
+  $('.question-container.active .answers a').length - $('.question-container.active .answers a.error').length
 
 calculateScore = ()->
   score = 0

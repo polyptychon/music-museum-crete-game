@@ -100,3 +100,38 @@ video {
 .dropdown-menu-btn {
   @include noselect();
 }
+.current-score {
+  position: absolute;
+  z-index: 100;
+  top: 43%;
+  left: 47%;
+  color: $brand-primary;
+  text-shadow: 1px 1px $gray;
+  font-size: 100px;
+  opacity: 1;
+  transform: translate(-50%, -50%), scale(0,0);
+  pointer-events: none;
+  &.hidden {
+    opacity: 0;
+  }
+  &.visible {
+    display: block;
+    -webkit-animation: zoomAndFadeOut 1s ease-in-out;
+    animation: zoomAndFadeOut 1s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+}
+@-webkit-keyframes zoomAndFadeOut {
+  0% {
+    transform: scale(0,0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2,2);
+    opacity: .7;
+  }
+  100% {
+    transform: scale(1.5,1.5);
+    opacity: 0;
+  }
+}
