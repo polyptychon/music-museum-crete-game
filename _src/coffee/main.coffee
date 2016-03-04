@@ -11,6 +11,8 @@ require "bootstrap/assets/javascripts/bootstrap/modal"
 #require "bootstrap/assets/javascripts/bootstrap/collapse"
 #require "bootstrap/assets/javascripts/bootstrap/carousel"
 #require "bootstrap/assets/javascripts/bootstrap/tooltip"
+require "./preloadjs-0.6.2.min"
+require "./soundjs-0.6.2.min"
 
 
 init = ()->
@@ -52,6 +54,7 @@ init = ()->
     if $(this).data('isCorrect')
       $('.current-score').html "+#{getCurrentScore()}"
       $('.current-score').addClass('visible').removeClass('hidden')
+      createjs.Sound.play("success")
       setTimeout(()->
         modal.modal('show')
         centerModal(modal, $('.page.active'))
@@ -61,6 +64,7 @@ init = ()->
       modal.modal('show')
       centerModal(modal, $('.page.active'))
   )
+  preloadSound()
   setImagePopovers()
   hideHiddenElements()
   setScore()
@@ -153,6 +157,12 @@ calculateScore = ()->
   )
   return score
 
+preloadSound = ()->
+  queue = new createjs.LoadQueue()
+  queue.installPlugin(createjs.Sound)
+  queue.loadManifest([
+    {id:"success", src:SUCCESS_SOUND}
+  ])
 totalAswers = ()->  return $('.question-container .answers a').length
 setScore = ()-> $('.score-value').html "#{calculateScore()} / #{totalAswers()}"
 
