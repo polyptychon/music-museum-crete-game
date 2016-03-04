@@ -64,8 +64,11 @@
     margin-top: 200px;
     padding: 0 25px;
   }
-
+  .right-panel {
+    width: 58%;
+  }
   .left-panel {
+    width: 42%;
     .description {
       margin-top: 10px;
       color: $body-bg;
