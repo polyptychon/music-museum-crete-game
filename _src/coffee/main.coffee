@@ -58,6 +58,7 @@ $('.quiz .answers a').bind('click', ()->
   if $(this).data('isCorrect') && $('.question-container.active').next().length==0
     modal = $('#finishModal')
     modal.find('.modal-body').html($(this).data('description') + '<br><hr><br>' + $('.quiz.page').data('endGameMessage'))
+    $('.score-value').html "#{calculateScore()} / #{totalAswers()}"
   else
     modal.find('.modal-body').html($(this).data('description'))
   modal.modal('show')

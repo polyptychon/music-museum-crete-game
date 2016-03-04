@@ -232,6 +232,9 @@ header {
 .modal-body {
   font-size: 16px;
   padding: 10px 15px 15px;
+  .score-value {
+    color: darken($brand-primary, 10%);
+  }
 }
 .modal-footer {
   margin-bottom: 20px;
