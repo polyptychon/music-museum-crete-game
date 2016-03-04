@@ -65,6 +65,16 @@
     padding: 0 25px;
   }
 
+  .left-panel {
+    .description {
+      margin-top: 10px;
+      color: $body-bg;
+      @media (min-width: $screen-md-min) {
+        display: none;
+      }
+    }
+  }
+
 }
 .quiz {
   background: $gray-darker;
