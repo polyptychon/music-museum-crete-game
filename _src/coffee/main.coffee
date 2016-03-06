@@ -104,6 +104,7 @@ reset = ()->
     $(this).removeClass('disabled').removeClass('success').removeClass('error')
     $(this).attr('style', '')
   )
+  setScore()
   hideHiddenElements()
 
 gotoPage = (activePage, nextPage)->
