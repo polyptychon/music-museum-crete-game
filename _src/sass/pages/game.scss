@@ -61,9 +61,9 @@
     font-size: 18px;
   }
   .title, .description {
-    margin-top: 200px;
     padding: 0 25px;
-    @media (min-width: $screen-lg-min) {
+    margin-top: 200px;
+    @media (min-width: 1140px) {
       margin-top: 250px;
     }
     @media (max-width: $screen-xs-max) {
