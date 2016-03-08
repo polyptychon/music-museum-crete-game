@@ -18,9 +18,9 @@
     height: 621px;
     overflow: hidden;
   }
-  @media (min-width: $screen-lg-min) {
-    width: $container-lg + 10px;
-    height: 633px;
+  @media (min-width: $container-lg ) {
+    width: $container-lg;
+    height: 700px;
     overflow: hidden;
   }
 }
