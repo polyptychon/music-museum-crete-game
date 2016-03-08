@@ -63,6 +63,12 @@
   .title, .description {
     margin-top: 200px;
     padding: 0 25px;
+    @media (min-width: $screen-lg-min) {
+      margin-top: 250px;
+    }
+    @media (max-width: $screen-xs-max) {
+      margin-top: 160px;
+    }
   }
   @media (min-width: $screen-lg-min) {
     .right-panel {
